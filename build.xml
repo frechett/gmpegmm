@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="dist" name="GmpeGmm">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<property name="dist.dir" value="dist" />
+	<property name="lib_dir" value="lib" />
+	<property name="lib_path" value="${dist.dir}/${lib_dir}" />
+	<property name="GmpeGmmZip" value="GmpeGmm.zip" />
+
+	<path id="GmpeGmm.classpath">
+		<pathelement location="bin" />
+		<pathelement location="lib" />
+		<pathelement location="lib/nshmp-haz.jar" />
+	</path>
+
+	<target name="clean">
+		<delete dir="bin" />
+		<delete dir="${dist.dir}" />
+		<delete file="${GmpeGmmZip}" />
+	</target>
+
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build" depends="init">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="GmpeGmm.classpath" />
+		</javac>
+	</target>
+
+	<target name="create_run_jar" depends="build">
+		<delete dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<jar destfile="${dist.dir}/GmpeGmm.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.isti.gmpegmm.DeterministicSpectra" />
+				<attribute name="Class-Path" value=". ${lib_dir}/nshmp-haz.jar" />
+			</manifest>
+			<fileset dir="bin" />
+		</jar>
+		<copy todir="${lib_path}">
+			<fileset dir="lib" />
+		</copy>
+	</target>
+
+	<target name="dist" depends="create_run_jar" description="packages for distribution">
+		<zip destfile="${GmpeGmmZip}">
+			<zipfileset dir="${dist.dir}" includes="**" />
+		</zip>
+	</target>
+</project>
