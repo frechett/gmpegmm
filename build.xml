@@ -2,8 +2,8 @@
 <project basedir="." default="dist" name="GmpeGmm">
 	<property environment="env" />
 	<property name="debuglevel" value="source,lines,vars" />
-	<property name="target" value="1.7" />
-	<property name="source" value="1.7" />
+	<property name="target" value="11" />
+	<property name="source" value="11" />
 	<property name="dist.dir" value="dist" />
 	<property name="lib_dir" value="lib" />
 	<property name="lib_path" value="${dist.dir}/${lib_dir}" />
@@ -12,7 +12,7 @@
 	<path id="GmpeGmm.classpath">
 		<pathelement location="bin" />
 		<pathelement location="lib" />
-		<pathelement location="lib/nshmp-haz.jar" />
+		<pathelement location="lib/nshmp-lib.jar" />
 	</path>
 
 	<target name="clean">
@@ -44,7 +44,7 @@
 		<jar destfile="${dist.dir}/GmpeGmm.jar">
 			<manifest>
 				<attribute name="Main-Class" value="com.isti.gmpegmm.DeterministicSpectra" />
-				<attribute name="Class-Path" value=". ${lib_dir}/nshmp-haz.jar" />
+				<attribute name="Class-Path" value=". ${lib_dir}/nshmp-lib.jar" />
 			</manifest>
 			<fileset dir="bin" />
 		</jar>

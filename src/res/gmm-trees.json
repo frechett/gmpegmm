@@ -1,0 +1,29 @@
+[
+  {
+    "id": "CEUS",
+    "tree": [
+      { "id": "NGA_EAST_2018", "weight": 0.667 },
+      { "id": "NGA_EAST_SEEDS_2018", "weight": 0.333 }
+    ]
+  },
+  {
+    "id": "WUS",
+    "tree": [
+      { "id": "ASK_14_BASE", "weight": 0.25 },
+      { "id": "BSSA_14_BASE", "weight": 0.25 },
+      { "id": "CB_14_BASE", "weight": 0.25 },
+      { "id": "CY_14_BASE", "weight": 0.25 }
+    ]
+  },
+  {
+    "id": "COUS",
+    "tree": [
+      { "id": "NGA_EAST_2018", "weight": 0.334 },
+      { "id": "NGA_EAST_SEEDS_2018", "weight": 0.166 },
+      { "id": "ASK_14_BASE", "weight": 0.125 },
+      { "id": "BSSA_14_BASE", "weight": 0.125 },
+      { "id": "CB_14_BASE", "weight": 0.125 },
+      { "id": "CY_14_BASE", "weight": 0.125 }
+    ]
+  }
+]
